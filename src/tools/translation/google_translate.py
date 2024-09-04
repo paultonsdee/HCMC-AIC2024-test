@@ -1,7 +1,7 @@
-from src.tools.translation.base import BaseTranslator
-from src.tools.pre_processing import clean
+from src.tools.translation import BaseTranslation
+from src.pre_processing import clean
 
-class GoogleTranslator(BaseTranslator):
+class GoogleTranslator(BaseTranslation):
 
     def __init__(self, from_lang=None, to_lang='en', auto_clean=False):
         super().__init__(from_lang=from_lang, to_lang=to_lang, auto_clean=auto_clean)
@@ -9,7 +9,7 @@ class GoogleTranslator(BaseTranslator):
             self.from_lang = 'vi'
         self.translator = self.build_engine()
 
-    def translate(self, text: str) -> str:
+    def run(self, text: str) -> str:
         if self.auto_clean:
             text = clean(text)
         result = self.translator.translate(text).text
@@ -20,5 +20,5 @@ class GoogleTranslator(BaseTranslator):
             import googletrans
             translator = googletrans.Translator()
             return translator
-        except ValueError:
-            raise ValueError('`googletrans` is not installed. Please try `pip install googletrans`')
+        except ValueError as ve:
+            raise ValueError('`googletrans` is not installed. Please try `pip install googletrans`') from ve

@@ -1,21 +1,8 @@
-from abc import ABC, abstractmethod
-from typing import Any
+from src.tools.base import BaseTool
 
-class BaseTranslator(ABC):
 
-    def __init__(self,
-                 from_lang:str,
-                 to_lang:str,
-                 auto_clean:bool=False):
-
+class BaseTranslation(BaseTool): 
+    def __init__(self, from_lang=None, to_lang='en', auto_clean=False):
         self.from_lang = from_lang
-        self.to_lang = to_lang
+        self.to_lange = to_lang
         self.auto_clean = auto_clean
-
-    @abstractmethod
-    def translate(self, text) -> str:
-        raise NotImplementedError
-
-    @abstractmethod
-    def build_engine(self) -> Any:
-        raise NotImplementedError
