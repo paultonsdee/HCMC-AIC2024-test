@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Search Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+
+            <!-- PHẦN TÌM KIẾM -->
+
+            <div class="searchBar">
+                <div class="searchBarContent">
+                    <div class="left-content">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div class="center-content">
+                        <input type="text" class="searchInput" placeholder="">
+                    </div>
+                    <div class="right-content">
+                        <i class=" micro fa-solid fa-microphone"></i>
+                        <i class="cancel fa-solid fa-x"></i>
+                    </div>
+                </div>
+                <select id="advancedFilter" name="advancedFilter">
+                    <option value="0">All</option>
+                    <option value="1">Action</option>
+                    <option value="2">Comedy</option>
+                    <option value="3">Drama</option>
+                </select>
+                <button id="search-btn">Search</button>
+            </div>
+
+            <!-- CÁC TỪ KHÓA LIÊN QUAN -->
+
+            <div class="relate-container">
+                <div class="relate-item">
+                    <div class="relate-img">
+                        <img src="./assets/11352.jpg" alt="">
+                    </div>
+                    <div class="relate-name">
+                        <span class="name">Cờ Tổ Quốc</span>
+                    </div>
+                </div>
+                <div class="relate-item">
+                    <div class="relate-img">
+                        <img src="./assets/11352.jpg" alt="">
+                    </div>
+                    <div class="relate-name">
+                        <span class="name">Cờ Tổ Quốc</span>
+                    </div>
+                </div>
+                <div class="relate-item">
+                    <div class="relate-img">
+                        <img src="./assets/11352.jpg" alt="">
+                    </div>
+                    <div class="relate-name">
+                        <span class="name">Cờ Tổ Quốc</span>
+                    </div>
+                </div>
+                <div class="relate-item">
+                    <div class="relate-img">
+                        <img src="./assets/11352.jpg" alt="">
+                    </div>
+                    <div class="relate-name">
+                        <span class="name">Cờ Tổ Quốc</span>
+                    </div>
+                </div>
+                <div class="relate-item">
+                    <div class="relate-img">
+                        <img src="./assets/11352.jpg" alt="">
+                    </div>
+                    <div class="relate-name">
+                        <span class="name">Cờ Tổ Quốc</span>
+                    </div>
+                </div>
+                <div class="relate-item">
+                    <div class="relate-img">
+                        <img src="./assets/11352.jpg" alt="">
+                    </div>
+                    <div class="relate-name">
+                        <span class="name">Viet Nam Flag</span>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- KẾT QUẢ TÌM KIẾM VÀ SỐ TRANG -->
+
+            <div class="result-container">
+                
+                <!-- KẾT QUẢ TÌM KIẾM -->
+
+                <div class="result-content" id="resultContent">
+                    <!-- <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video  src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video  src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video  src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video  src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/test.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div>
+                    <div class="result-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <video src="./assets/3205442632339.mp4"></video>
+                    </div> -->
+                    
+                </div>
+
+                <!-- SỐ TRANG HIỆN TẠI / TỔNG SỐ TRANG -->
+
+                <div class="number-page">
+                    <div class="number-content">
+                        <div class="pre-btn" id="prevBtn">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </div>
+                        <div class="current-page">
+                            <span class="current-number" id="currentPage">1</span>
+                            <span>/</span>
+                            <span class="total-page" id="totalPage">1</span>
+                        </div>
+                        <div class="next-btn" id="nextBtn">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PHẦN POPUP -->
+
+    <div class="overlay" id="videoOverlay">
+        <div class="popup">
+            <div class="tittle-popup">
+                <div class="video-popup">
+                    <video controls id="popupVideo"></video>
+                </div>
+                <div class="info-popup">
+                    <span class="close-btn" id="closePopup">&times;</span>
+                    <h2>BÀI HÁT XIN CHÀO VIỆT NAM</h2>
+                    <span class="ratio-popup">Tỉ lệ được nghe: 99.9%</span>
+                    <div class="search-relate">
+                        <button class="search-relate-btn">Tìm kiếm video liên quan</button>
+                    </div>
+                </div>
+            </div>
+            <div class="frame-popup">
+                <div class="frame-header">
+                    <h4>Frame liên quan: </h4>
+                </div>
+                <div class="frame-content">
+                    <div class="frame-item">
+                        <img src="./assets/screenshot.png" alt="">
+                    </div>
+                    <div class="frame-item">
+                        <img src="./assets/screenshot.png" alt="">
+                    </div>
+                    <div class="frame-item">
+                        <img src="./assets/screenshot.png" alt="">
+                    </div>
+                    <div class="frame-item">
+                        <img src="./assets/screenshot.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="./script.js"></script>
+</body>
+</html>
