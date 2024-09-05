@@ -6,7 +6,3 @@ class BaseTool(ABC):
     @abstractmethod
     def run(self, input):
         raise NotImplementedError
-
-    @abstractmethod
-    def build_engine(self) -> Any:
-        raise NotImplementedError

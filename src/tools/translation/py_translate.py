@@ -7,7 +7,11 @@ class Translator(BaseTranslation):
 
         if from_lang is None:
             self.from_lang = 'autodetect'
-        self.translator = self.build_engine()
+        try:
+            import translate
+            self.translator = translate.Translator(from_lang=self.from_lang, to_lang=self.to_lang)
+        except ValueError:
+            raise ValueError('`translate` is not installed. Please try `pip install translate`')
     
     def run(self, text: str) -> str:
         if self.auto_clean:
@@ -15,11 +19,3 @@ class Translator(BaseTranslation):
         result = self.translator.translate(text)
         assert type(result) == str
         return result
-
-    def build_engine(self):
-        try:
-            import translate
-            translator = translate.Translator(from_lang=self.from_lang, to_lang=self.to_lang)
-            return translator
-        except ValueError:
-            raise ValueError('`translate` is not installed. Please try `pip install translate`')

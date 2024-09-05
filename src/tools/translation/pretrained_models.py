@@ -8,17 +8,14 @@ class MarianTranslator(BaseTranslation):
     def __init__(self, from_lang=None, to_lang='en', auto_clean=False):
         super().__init__(from_lang=from_lang, to_lang=to_lang, auto_clean=auto_clean)
         self.model_id = "Helsinki-NLP/opus-mt-vi-en"
-        self.tokenizer, self.model = self.build_engine(self.model_id)
 
-    def build_engine(self, model_id):
         try:
             from transformers import MarianMTModel, MarianTokenizer
-            tokenizer = MarianTokenizer.from_pretrained(model_id)
-            model = MarianMTModel.from_pretrained(model_id).eval()
-            return (tokenizer, model)
+            self.tokenizer = MarianTokenizer.from_pretrained(self.model_id)
+            self.model = MarianMTModel.from_pretrained(self.model_id).eval()
         except:
             raise ValueError(f'Error loading model {self.model_id}. `transformers` is not installed. Please try `pip install transformers`')
-
+        
     def run(self, text):
         if self.auto_clean: 
             text = clean(text)
@@ -34,14 +31,10 @@ class M2M100Translator(BaseTranslation):
     def __init__(self, from_lang=None, to_lang='en', auto_clean=False):
         super().__init__(from_lang=from_lang, to_lang=to_lang, auto_clean=auto_clean)
         self.model_id = "facebook/m2m100_418M"
-        self.tokenizer, self.model = self.build_engine(self.model_id)
-
-    def build_engine(self, model_id):
         try:
             from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
-            tokenizer = M2M100Tokenizer.from_pretrained(model_id)
-            model = M2M100ForConditionalGeneration.from_pretrained(model_id).eval()
-            return (tokenizer, model)
+            self.tokenizer = M2M100Tokenizer.from_pretrained(self.model_id)
+            self.model = M2M100ForConditionalGeneration.from_pretrained(self.model_id).eval()
         except:
             raise ValueError(f'Error loading model {self.model_id}. `transformers` is not installed. Please try `pip install transformers`')
 
@@ -61,14 +54,10 @@ class EnvT5Translator(BaseTranslation):
     def __init__(self, from_lang=None, to_lang='en', auto_clean=False):
         super().__init__(from_lang=from_lang, to_lang=to_lang, auto_clean=auto_clean)
         self.model_id = "VietAI/envit5-translation"
-        self.tokenizer, self.model = self.build_engine(self.model_id)
-
-    def build_engine(self, model_id):
         try:
             from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-            tokenizer = AutoTokenizer.from_pretrained(model_id)
-            model = AutoModelForSeq2SeqLM.from_pretrained(model_id).eval()
-            return (tokenizer, model)
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
+            self.model = AutoModelForSeq2SeqLM.from_pretrained(self.model_id).eval()
         except:
             raise ValueError(f'Error loading model {self.model_id}. `transformers` is not installed. Please try `pip install transformers`')
 

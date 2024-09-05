@@ -1,8 +1,11 @@
-import re
+import requests
 
 ####################
 #   ### TEXT ###    
 ####################
+import re
+
+
 def clean_extra_whitespace(text: str) -> str:
     """
         Cleans extra whitespace characters that appear between words.
@@ -39,6 +42,20 @@ def clean(
 ####################
 #   ### IMAGE ###    
 ####################
+import PIL
+from PIL import Image
+
+def get_image(image): 
+    image = Image.open(image).convert("RGB")
+    return image
+
+def load_image(image_str: str) -> Image.Image:
+    if image_str.startswith("http"):
+        image = Image.open(requests.get(image_str, stream=True).raw).convert("RGB")
+    else:
+        image = Image.open(image_str).convert("RGB")
+
+    return image
 
 
 
