@@ -1,3 +1,4 @@
+import os
 import requests
 
 try: 
@@ -5,23 +6,27 @@ try:
 except ImportError as ie:
     raise ImportError("`openai` is not installed. Please try `pip install openai`!") from ie
 
-from src.tools.llms import BaseAgent
+from src.tools.llms.base import BaseAgent
 from src.tools.llms.prompts import SYSTEM_PROMPT
 
-class SambaNova(BaseAgent):
+class SambaNovaAgent(BaseAgent):
   SAMBANOVA_API_URL = "https://fast-api.snova.ai/v1"
   SUPPORTED_MODEL = [
                     "Meta-Llama-3.1-8B-Instruct",          # CL-OL: 8192-1000
                     "Meta-Llama-3.1-70B-Instruct",         # CL-OL: 8192-1000
                     "Meta-Llama-3.1-405B-Instruct"         # CL-OL: 8192-1000
                      ]
-  def __init__(self, api_key, model_name="Meta-Llama-3.1-8B-Instruct"):
+  def __init__(self, 
+               api_key:str=None, 
+               model_name="Meta-Llama-3.1-8B-Instruct",
+               system_prompt:str=SYSTEM_PROMPT):
 
+    api_key = os.getenv('SAMBANOVA_API_KEY')
     self.client = openai.OpenAI(base_url=self.SAMBANOVA_API_URL, 
                                 api_key=api_key)
 
   
-    self.SYS_PROMPT = PERSONA_PROMPT
+    self.SYS_PROMPT = system_prompt
     self.MODEL_NAME = model_name
 
     super().__init__(api_key=api_key, model_name=model_name)

@@ -13,29 +13,29 @@ ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
 import unittest
 
-from src.tools.llms.gemini import Gemini
-from src.tools.llms.groq import Groq
+from src.tools.llms.gemini import GeminiAgent
+from src.tools.llms.groq import GroqAgent
 
 PROMPT = "Tell me a joke"
 
 class TestGemini(unittest.TestCase): 
     def setUp(self): 
         os.environ['GOOGLE_API_KEY'] = os.getenv('GOOGLE_API_KEY')
-        self.llm = Gemini()
+        self.llm = GeminiAgent()
 
     def test_result(self):
         result = self.llm.run(input=PROMPT)
         self.assertIsInstance(result, str)
 
 
-# class TestGroq(unittest.TestCase): 
-#     def setUp(self): 
-#         os.environ['GROQ_API_KEY'] = os.getenv('GROQ_API_KEY')
-#         self.llm = Groq()
+class TestGroq(unittest.TestCase): 
+    def setUp(self): 
+        os.environ['GROQ_API_KEY'] = os.getenv('GROQ_API_KEY')
+        self.llm = GroqAgent()
 
-#     def test_result(self):
-#         result = self.llm.run(input=PROMPT)
-#         self.assertIsInstance(result, str)
+    def test_result(self):
+        result = self.llm.run(input=PROMPT)
+        self.assertIsInstance(result, str)
 
 if __name__ == "__main__": 
     unittest.main()

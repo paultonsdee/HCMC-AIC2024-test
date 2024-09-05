@@ -3,7 +3,7 @@
 import os
 import requests
 from typing import Any, Optional, Dict
-from src.tools.llms import BaseAgent
+from src.tools.llms.base import BaseAgent
 
 try:
     import google.generativeai as genai
@@ -21,12 +21,13 @@ SAFETY_SETTINGS = {
                 HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE
         }
 
-class Gemini(BaseAgent): 
+class GeminiAgent(BaseAgent): 
 
     def __init__(self, 
                 api_key: Optional[str]=None,
                 model_name: Optional[str]='models/gemini-1.5-flash',
                 safety_settings: "genai.types.SafetySettingOptions" = SAFETY_SETTINGS, 
+                system_prompt:str=None,
                 **gen_config: Any
                 ):
 
@@ -34,9 +35,9 @@ class Gemini(BaseAgent):
             "api_key": api_key or os.getenv("GOOGLE_API_KEY"),
         }
     
+        self.system_prompt = system_prompt
         
         genai.configure(**config_params)
-
 
         self.model = genai.GenerativeModel(
             model_name=model_name,
@@ -58,9 +59,13 @@ class Gemini(BaseAgent):
 
     def run(self, input, text_only: bool = True):
         try:
-            messages = [{"role": "user", "content": input}]
-            # if self.system_prompt:
-            #     messages.append(self.system_prompt)
+            messages = [{"role": "user", "parts": input}]
+            if self.system_prompt:
+                sys_msg = {
+                    "role": "system", 
+                    "parts": [self.system_prompt]
+                }
+                messages.insert(0, sys_msg)
             response = self.model.generate_content(messages)
             if text_only:
                 return response.text

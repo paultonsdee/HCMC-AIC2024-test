@@ -10,9 +10,9 @@ except ImportError:
         "`pip install 'groq'`."
     )
 
-from src.tools.llms import BaseAgent
+from src.tools.llms.base import BaseAgent
 from src.tools.llms.prompts import SYSTEM_PROMPT
-class Groq(BaseAgent):
+class GroqAgent(BaseAgent):
 
     SUPPORTED_MODEL = {
         "llama3-8b": "llama3-8b-8192",
@@ -23,9 +23,11 @@ class Groq(BaseAgent):
     def __init__(self,
                 api_key: Optional[str] = None,
                 model_name: str='llama3-8b',
-                max_retries:int=5
+                max_retries:int=5,
+                system_prompt:str=SYSTEM_PROMPT
                 ):
-        
+                
+        self.system_prompt=system_prompt
         api_key = api_key or os.getenv("GROQ_API_KEY")
                     
         if model_name not in self.SUPPORTED_MODEL:
