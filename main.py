@@ -1,13 +1,14 @@
 import uvicorn
 
-from fastapi import FastAPI
+# from fastapi import FastAPI
 
-from app.routes import base_route
+# from app.routes import base_route
 
-app = FastAPI()
+# app = FastAPI()
 
-app.include_router(base_route)
+from app.setup_app import setup_app
 
+app = setup_app()
 
 @app.get("/")
 async def root():
