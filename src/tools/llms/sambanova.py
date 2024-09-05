@@ -6,7 +6,7 @@ except ImportError as ie:
     raise ImportError("`openai` is not installed. Please try `pip install openai`!") from ie
 
 from src.tools.llms import BaseAgent
-from src.tools.llms.prompts import PERSONA_PROMPT
+from src.tools.llms.prompts import SYSTEM_PROMPT
 
 class SambaNova(BaseAgent):
   SAMBANOVA_API_URL = "https://fast-api.snova.ai/v1"

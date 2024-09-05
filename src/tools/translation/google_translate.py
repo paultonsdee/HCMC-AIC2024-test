@@ -1,4 +1,4 @@
-from src.tools.translation import BaseTranslation
+from src.tools.translation.base import BaseTranslation
 from src.pre_processing import clean
 
 class GoogleTranslator(BaseTranslation):

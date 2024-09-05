@@ -1,6 +1,6 @@
 from typing import Any
 
-from src.tools.translation import BaseTranslation
+from src.tools.translation.base import BaseTranslation
 from src.pre_processing import clean
 
 # HuggingFace's model card: Helsinki-NLP/opus-mt-vi-en
@@ -16,13 +16,12 @@ class MarianTranslator(BaseTranslation):
         except:
             raise ValueError(f'Error loading model {self.model_id}. `transformers` is not installed. Please try `pip install transformers`')
         
-    def run(self, text):
+    def run(self, text) -> str:
         if self.auto_clean: 
             text = clean(text)
         input_ids = self.tokenizer(text, return_tensors="pt").input_ids
         outputs = self.model.generate(input_ids)
         result = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        assert type(result) == str
         return result
     
 
@@ -38,14 +37,13 @@ class M2M100Translator(BaseTranslation):
         except:
             raise ValueError(f'Error loading model {self.model_id}. `transformers` is not installed. Please try `pip install transformers`')
 
-    def run(self, text):
+    def run(self, text) -> str:
         if self.auto_clean: 
             text = clean(text)
         self.tokenizer.src_lang = "vi"
         input_ids = self.tokenizer(text, return_tensors="pt").input_ids
         outputs = self.model.generate(input_ids, forced_bos_token_id=self.tokenizer.get_lang_id("en"))
         result = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        assert type(result) == str
         return result
     
 
@@ -67,7 +65,6 @@ class EnvT5Translator(BaseTranslation):
         input_ids = self.tokenizer(text, return_tensors="pt").input_ids
         outputs = self.model.generate(input_ids)
         result = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        assert type(result) == str
         return result
 
 # Define a dictionary for supported models

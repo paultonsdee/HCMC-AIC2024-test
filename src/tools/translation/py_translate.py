@@ -1,9 +1,10 @@
-from src.tools.translation import BaseTranslation
+from src.tools.translation.base import BaseTranslation
 from src.pre_processing import clean
 
-class Translator(BaseTranslation):
+class PyTranslator(BaseTranslation):
 
     def __init__(self, from_lang='vi', to_lang='en', auto_clean=False):
+        super().__init__(from_lang=from_lang, to_lang=to_lang, auto_clean=auto_clean)
 
         if from_lang is None:
             self.from_lang = 'autodetect'
@@ -17,5 +18,4 @@ class Translator(BaseTranslation):
         if self.auto_clean:
             text = clean(text)
         result = self.translator.translate(text)
-        assert type(result) == str
         return result

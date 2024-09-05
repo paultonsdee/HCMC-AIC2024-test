@@ -1,7 +1,6 @@
+import os
 import requests
-from typing import Optional, Union
-from src.tools.llms import BaseAgent
-from src.tools.llms.prompts import PERSONA_PROMPT
+from typing import Optional
 
 try:
     from groq import Groq
@@ -11,6 +10,8 @@ except ImportError:
         "`pip install 'groq'`."
     )
 
+from src.tools.llms import BaseAgent
+from src.tools.llms.prompts import SYSTEM_PROMPT
 class Groq(BaseAgent):
 
     SUPPORTED_MODEL = {
@@ -24,19 +25,22 @@ class Groq(BaseAgent):
                 model_name: str='llama3-8b',
                 max_retries:int=5
                 ):
-        super().__init__()
-            
+        
+        api_key = api_key or os.getenv("GROQ_API_KEY")
+                    
         if model_name not in self.SUPPORTED_MODEL:
             raise ValueError(f"Your input {model_name} is not supported. We support {', '.join(self.SUPPORTED_MODEL)}")
+
+        super().__init__(api_key=api_key, model_name=model_name)
         
         self.model = Groq(api_key=api_key, max_retries=max_retries)
 
     def get_models(self):
         return ', '.join(self.SUPPORTED_MODEL)
 
-    def run(self, prompt, text_only: bool = True,**kwargs):
+    def run(self, input, text_only: bool = True,**kwargs):
         try:
-            messages = [{"role": "user", "content": prompt}]
+            messages = [{"role": "user", "content": input}]
             if self.system_prompt:
                 messages.append(self.system_prompt)
 

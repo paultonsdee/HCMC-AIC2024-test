@@ -24,10 +24,9 @@ SAFETY_SETTINGS = {
 class Gemini(BaseAgent): 
 
     def __init__(self, 
-                api_key: Optional[str],
+                api_key: Optional[str]=None,
                 model_name: Optional[str]='models/gemini-1.5-flash',
                 safety_settings: "genai.types.SafetySettingOptions" = SAFETY_SETTINGS, 
-
                 **gen_config: Any
                 ):
 
@@ -39,7 +38,7 @@ class Gemini(BaseAgent):
         genai.configure(**config_params)
 
 
-        self._model = genai.GenerativeModel(
+        self.model = genai.GenerativeModel(
             model_name=model_name,
             safety_settings=safety_settings,
         )
@@ -59,7 +58,10 @@ class Gemini(BaseAgent):
 
     def run(self, input, text_only: bool = True):
         try:
-            response = self.model.generate_content(input)
+            messages = [{"role": "user", "content": input}]
+            # if self.system_prompt:
+            #     messages.append(self.system_prompt)
+            response = self.model.generate_content(messages)
             if text_only:
                 return response.text
             return response
