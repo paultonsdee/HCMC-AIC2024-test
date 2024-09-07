@@ -45,7 +45,7 @@ class M2M100Translator(BaseTranslation):
         outputs = self.model.generate(input_ids, forced_bos_token_id=self.tokenizer.get_lang_id("en"))
         result = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
         return result
-    
+
 
 # HuggingFace's model card: VietAI/envit5-translation
 class EnvT5Translator(BaseTranslation):
