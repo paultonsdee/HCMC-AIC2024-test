@@ -1,6 +1,12 @@
+import cv2
 import json
 import yaml
 import logging
+
+from PIL import Image
+
+import matplotlib.pyplot as plt
+
 
 # ===== READ/WRITE DATA FORMAT =====
 def read_yaml(file_path: str) -> dict:
@@ -44,3 +50,47 @@ def set_logger(level: int = logging.DEBUG, file_path: str = None) -> logging.Log
     logger.addHandler(console_handler)
 
     return logger  
+
+
+# ===== PLOT KEY-FRAMES =====
+def get_frame(video, frame_id):
+    video.set(cv2.CAP_PROP_POS_FRAMES, frame_id)
+    _, frame = video.read()
+    
+    return Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+
+def fml_frames(video, shot): # first, mid, last frame
+    first_id, last_id = shot
+    mid_id = (last_id - first_id) // 2 + first_id
+    
+    first_frame = get_frame(video, first_id)
+    mid_frame = get_frame(video, mid_id)
+    last_frame = get_frame(video, last_id)
+    
+    return [(first_frame, first_id), (mid_frame, mid_id), (last_frame, last_id)]
+
+def show_fml_keyframes(keyframes):
+    len_keyframes =  len(keyframes)
+    
+    plt.figure(figsize=(10, 5))
+    for i in range(len_keyframes):
+        frame = keyframes[i]
+        plt.subplot(1, len_keyframes, i+1)
+        plt.imshow(frame[0])
+        plt.title(f'Frame {frame[1]}')
+        
+    plt.show()
+
+def show_lmske_keyframes(video, keyframes):
+    len_keyframes =  len(keyframes)
+    
+    plt.figure(figsize=(10, 5))
+    for i in range(len_keyframes):
+        frame_i = keyframes[i]
+        plt.subplot(1, len_keyframes, i+1)
+        plt.imshow(get_frame(video, frame_i))
+        plt.title(f'Frame {frame_i}')
+        
+    plt.show()
+
+    
