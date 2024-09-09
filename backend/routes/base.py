@@ -1,7 +1,7 @@
 
 from fastapi import APIRouter, HTTPException
 
-from app.api.base import translate_to_en, talk_to_llm
+from backend.api.base import translate_to_en, talk_to_llm
 
 base_route = APIRouter(
     prefix="/base"
