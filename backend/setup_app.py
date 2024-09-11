@@ -3,7 +3,7 @@ __author__ = "MinLee0210"
 
 from fastapi import FastAPI
 
-from backend.routes import base_route
+from routes import base_route
 
 def setup_app() -> FastAPI: 
     app = FastAPI()

@@ -1,1 +1,1 @@
-from backend.routes.base import base_route
+from routes.base import base_route
