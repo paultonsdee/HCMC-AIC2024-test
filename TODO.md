@@ -8,11 +8,10 @@
 
 ## Front-end
 
-- [ ] Improve Landing Page. 
+- [ x ] Improve Landing Page. 
 - [ ] Improve Searching Page. 
 - [ ] Integrate backend's API. 
 - [ ] Containerize. 
-
 
 ## Roadmap
 
