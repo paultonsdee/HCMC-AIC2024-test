@@ -1,0 +1,5 @@
+llm: 
+  provider: gemini
+  api_key: None 
+  llm_config: 
+    temperature: 1.0

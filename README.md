@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./frontend/static/images/poster.png" width="1080">
+  <img src="./frontend/static/images/contest_banner.png" width="1080">
 </p>
 <h1 align="center">HCMC-AIC2024</h1>
 
@@ -33,16 +33,33 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 ## 🤖 Tech Stack
 
-- FastAPI: Building server (Back-end, Front-end).
-- Docker: Containerize. 
+### Server building
+
+- Back-end: FastAPI. 
+- Front-end: FastAPI (Jinja2), HTML/CSS/JS, Boostrap. 
+- Container: Docker.
+
+### Core technology
+
+- Keyframe-extraction: TransNetV2, K-Means. 
+- LLM: Gemini, Groq, SambaNova, etc. 
+- Embedding: CLIP. 
 
 
 ## 🚀 Usage
 
-1. Setup Environment
+**Clone the repository**
 
 
-2. Running the App
+**Setup Environment**
+
+The project utilizes LLMs for prompt refinement, therefore, you have to get API's keys from Gemini or Groq to achieve the best result. In order to integrate to the system, move to the `/backend` directory and create an `.env` file. The `.env.example` demonstrates to content of the `.env` file. 
+
+**Run the application**
+
+
+
+**API Inference**
 
 
 ## 👣 Workflow
@@ -55,6 +72,6 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 ## 🧑‍💻 Contributors
 
-<a href="">
+<a href="https://github.com/MinLee0210">
     <img src="https://avatars.githubusercontent.com/u/57653278?v=4">
 </a>
