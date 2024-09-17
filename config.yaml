@@ -1,3 +1,12 @@
+environment: 
+  device: cuda
+  root: ./db
+  features: features
+  lst_keyframes: 
+    path: s_optimized_keyframes
+    format: .webp
+  vid_url: vid_url.json
+
 translation: google
 
 llm: 
@@ -7,5 +16,9 @@ llm:
     temperature: 1.0
 
 clip: 
-  provider: openai/clip-vit-base-patch32
+  model_name: openai/clip-vit-base-patch32
   bin_name: clipB32
+
+blip: 
+  model_name: blip2_feature_extractor
+  bin_name: blip2fe

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./frontend/static/images/contest_banner.png" width="1080">
+  <img src="./app/static/images/contest_banner.png" width="1080">
 </p>
 <h1 align="center">HCMC-AIC2024</h1>
 
