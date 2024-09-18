@@ -1,14 +1,13 @@
 import os 
 import json
 
+
 from fastapi import APIRouter, HTTPException, Request, Response
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
+
 
 from app.api.v1.searching import search_by_text
-
-templates = Jinja2Templates(directory="templates")
-
+from app.core.logger import set_logger
 
 search_route = APIRouter(
     prefix="/search"

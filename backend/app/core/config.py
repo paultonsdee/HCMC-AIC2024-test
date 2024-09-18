@@ -13,7 +13,7 @@ ignore_warning()
 @dataclass
 class Environment:
     device = "cuda"
-    root = "./db"
+    root = "../db"                  # Need to go outside `/backend`
     features = "features"
     lst_keyframes = {
         'path': "s_optimized_keyframes", 
