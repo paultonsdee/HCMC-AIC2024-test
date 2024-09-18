@@ -32,3 +32,8 @@ def get_to_root():
     if str(ROOT) not in sys.path:
         sys.path.append(str(ROOT))  # add ROOT to PATH
     ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
+
+
+def ignore_warning():
+    import warnings
+    warnings.filterwarnings("ignore")

@@ -1,6 +1,5 @@
 from PIL import Image
 
-import torch
 from transformers import CLIPModel, CLIPImageProcessor, CLIPTokenizer
 
 from app.models.base import BaseTool

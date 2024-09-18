@@ -1,5 +1,4 @@
 import numpy as np
-import torch
 import faiss
 from PIL import Image
 import requests

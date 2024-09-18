@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from app.routes.base import base_route
+from app.routes import base_route, search_route
 
 
 def setup_app(lifespan=None) -> FastAPI: 
@@ -17,5 +17,6 @@ def setup_app(lifespan=None) -> FastAPI:
 )
 
     app.include_router(base_route)
-    app.mount("/static", StaticFiles(directory="static"), name="static")
+    app.include_router(search_route)
+    # app.mount("/static", StaticFiles(directory="static"), name="static")
     return app

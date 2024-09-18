@@ -10,8 +10,8 @@ except ImportError:
         "`pip install 'groq'`."
     )
 
-from app.models.llms.base import BaseAgent
-from app.models.llms.prompts import SYSTEM_PROMPT
+from backend.app.models.llms.base import BaseAgent
+from backend.app.models.llms.prompts import SYSTEM_PROMPT
 class GroqAgent(BaseAgent):
 
     SUPPORTED_MODEL = {
@@ -44,7 +44,7 @@ class GroqAgent(BaseAgent):
         try:
             messages = [{"role": "user", "content": input}]
             if self.system_prompt:
-                messages.append(self.system_prompt)
+                messages.backend.append(self.system_prompt)
 
             chat_completion = self.model.chat.completions.create(messages=messages, 
                                                                  model=self.model_name, 

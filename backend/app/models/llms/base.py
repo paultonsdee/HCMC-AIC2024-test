@@ -1,6 +1,6 @@
 from typing import Optional
 
-from app.models.base import BaseTool
+from backend.app.models.base import BaseTool
 
 class BaseAgent(BaseTool): 
     def __init__(self,

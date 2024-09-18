@@ -1,5 +1,11 @@
 from app.models.translation.base import BaseTranslation
-from backend.app.utils.pre_processing import clean
+from app.utils.pre_processing import clean
+
+import httpcore
+from typing import Any
+
+setattr(httpcore, 'SyncHTTPTransport', Any)
+
 
 class GoogleTranslator(BaseTranslation):
 

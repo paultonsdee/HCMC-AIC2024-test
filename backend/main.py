@@ -1,7 +1,7 @@
 import uvicorn
 
 from app.core.setup_lifespan import lifespan
-from app.setup_app import setup_app
+from app.core.setup_app import setup_app
 
 app = setup_app(lifespan)
 

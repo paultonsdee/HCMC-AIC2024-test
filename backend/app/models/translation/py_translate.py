@@ -1,5 +1,5 @@
 from app.models.translation.base import BaseTranslation
-from backend.app.utils.pre_processing import clean
+from app.utils.pre_processing import clean
 
 class PyTranslator(BaseTranslation):
 

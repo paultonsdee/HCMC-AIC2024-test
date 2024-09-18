@@ -19,7 +19,7 @@ class BlipTool(BaseTool):
     def __init__(self, model_name: str = "blip2_feature_extractor", 
                  model_type: str = "pretrain", 
                  is_eval: bool = True,
-                 device: str = "auto") -> None:
+                 device: str = "auto"):
         """
         Initializes the BlipTool instance.
 
@@ -39,6 +39,7 @@ class BlipTool(BaseTool):
         self.model_name = model_name
         self.device = device
         self.bin_name = 'blip2fe'       # TODO: Make this adaptive.
+        
     def run(self, input_data:object, is_numpy:bool=True) -> object:
         """
         Runs the BlipTool on the input data.

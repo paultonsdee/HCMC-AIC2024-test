@@ -6,8 +6,11 @@ from contextlib import asynccontextmanager
 from app.core.config import Config
 from app.core.logger import set_logger
 
+from app.utils.helpers import ignore_warning
 
-config = Config
+ignore_warning()
+
+config = Config()
 logging = set_logger()
 
 @asynccontextmanager
@@ -17,9 +20,9 @@ async def lifespan(app):
 
     logging.info("[INFO] Setup Paths ...")
     env_dir = config.environment
-    lst_keyframes = glob.glob(os.path.join(env_dir['root'], 
-                            f'{env_dir.lst_keyframes['path']}', 
-                            f'*{env_dir.lst_keyframes['format']}'))
+    lst_keyframes = glob.glob(os.path.join(env_dir.root, 
+                            f"{env_dir.lst_keyframes['path']}", 
+                            f"*{env_dir.lst_keyframes['format']}"))
     lst_keyframes.sort()
 
     id2img_fps = dict()
@@ -38,11 +41,10 @@ async def lifespan(app):
 
     # Setup Vector Store
     logging.info("[INFO] Setup Vector Store ...")
-    root_features = os.path.join(env_dir['root'], env_dir['features'])
-    bin_name = os.path.join(root_features, config.embedding_model.bin_name + '.bin')
-    bin_file= os.path.join(root_features, f'{bin_name}.bin')
+    root_features = os.path.join(env_dir.root, env_dir.features)
+    bin_file= os.path.join(root_features, f'{config.embedding_model.bin_name}.bin')
     
-    vector_store = config.vector_store(bin_file, id2img_fps, config.device, config.embedding_model)
+    vector_store = config.vector_store(env_dir.root, bin_file, id2img_fps, config.device, config.embedding_model)
     app.state.vector_store = vector_store
 
     yield
