@@ -1,11 +1,4 @@
-
-from fastapi import APIRouter, HTTPException, Request
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
-
-templates = Jinja2Templates(directory="templates")
-
+from fastapi import APIRouter, HTTPException, Request, Response
 
 from app.api.v1.base import generate_quote
 

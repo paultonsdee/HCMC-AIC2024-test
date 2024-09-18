@@ -59,11 +59,13 @@ class BlipTool(BaseTool):
 
         if isinstance(input_data, str):
             features = self._extract_text_features(input_data)
+            if is_numpy: 
+                features = features.text_embeds_proj[:, 0, :].detach().cpu().numpy()
         elif isinstance(input_data, Image):
             features =  self._extract_by_image_features(input_data)
 
-        if is_numpy: 
-            features = features.image_embeds_proj[:, 0, :].detach().cpu().numpy()
+            if is_numpy: 
+                features = features.image_embeds_proj[:, 0, :].detach().cpu().numpy()
 
         return features
     
@@ -79,6 +81,7 @@ class BlipTool(BaseTool):
         """
         with torch.no_grad(): 
             text = self.text_processor['eval'](text)
+            text = {"text_input": [text]}
             features = self.model.extract_features(text, mode="text")
         return features
 
@@ -93,5 +96,7 @@ class BlipTool(BaseTool):
             object: The extracted features.
         """
         image = self.image_processor["eval"](image).unsqueeze(0).to(self.device)
-        features = self.model.extract_features(image, mode="image")
+        image = {"image": image}
+        with torch.no_grad():
+            features = self.model.extract_features(image, mode="image")
         return features

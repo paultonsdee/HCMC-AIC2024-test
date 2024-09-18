@@ -8,10 +8,7 @@ from app.core.logger import set_logger
 from app.utils.helpers import ignore_warning, get_to_root
 
 get_to_root()
-
-import warnings
-warnings.filterwarnings('ignore')
-
+ignore_warning()
 
 config = Config()
 logging = set_logger()
@@ -27,7 +24,7 @@ async def lifespan(app):
                             f"{env_dir.lst_keyframes['path']}", 
                             f"*{env_dir.lst_keyframes['format']}"))
     lst_keyframes.sort()
-    logging.info(lst_keyframes[: 10])
+
     id2img_fps = dict()
     for i, img_path in enumerate(lst_keyframes):
         id2img_fps[i] = img_path
@@ -52,8 +49,8 @@ async def lifespan(app):
 
     yield
     
-    app.state.translator.close()
-    app.state.embedding_model.close()
-    app.state.vector_store.close()
     logging.info("[INFO] Clean up lifespan ...")
-    
+
+    del app.state.translator
+    del app.state.embedding_model
+    del app.state.vector_store    

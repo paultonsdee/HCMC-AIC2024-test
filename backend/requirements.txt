@@ -9,7 +9,6 @@ uvicorn==0.30.6
 # transformers==4.43.3
 # google-generativeai
 # groq
-jinja2
 faiss-gpu
 salesforce-lavis
 typer==0.3.2
