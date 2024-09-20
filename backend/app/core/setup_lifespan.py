@@ -2,10 +2,10 @@ import os
 import glob
 from contextlib import asynccontextmanager
 
-from app.core.config import Config
-from app.core.logger import set_logger
+from core.config import Config
+from core.logger import set_logger
 
-from app.utils.helpers import ignore_warning, get_to_root
+from utils.helpers import ignore_warning, get_to_root
 
 get_to_root()
 ignore_warning()

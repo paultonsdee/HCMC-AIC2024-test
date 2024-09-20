@@ -1,5 +1,5 @@
-from app.models.translation.base import BaseTranslation
-from app.utils.pre_processing import clean
+from models.translation.base import BaseTranslation
+from utils.pre_processing import clean
 
 import httpcore
 from typing import Any

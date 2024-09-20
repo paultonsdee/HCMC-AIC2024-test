@@ -1,4 +1,4 @@
-from app.models.base import BaseTool
+from models.base import BaseTool
 
 class BaseTranslation(BaseTool): 
     def __init__(self, from_lang=None, to_lang='en', auto_clean=False):

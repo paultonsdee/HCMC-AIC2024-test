@@ -3,7 +3,7 @@
 import os
 import requests
 from typing import Any, Optional, Dict
-from backend.app.models.llms.base import BaseAgent
+from models.llms.base import BaseAgent
 
 try:
     import google.generativeai as genai

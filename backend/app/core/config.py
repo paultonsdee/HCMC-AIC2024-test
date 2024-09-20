@@ -2,10 +2,10 @@ from dataclasses import dataclass
 
 import torch
 
-from app.models.translation import GoogleTranslator
-from app.models.embedding.blip_ import BlipTool
-from app.services.vector_store import VectorStore
-from app.utils.helpers import ignore_warning
+from models.translation import GoogleTranslator
+from models.embedding.blip_ import BlipTool
+from services.vector_store import VectorStore
+from utils.helpers import ignore_warning
 
 
 ignore_warning()

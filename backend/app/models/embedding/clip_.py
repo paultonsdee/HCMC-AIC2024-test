@@ -2,7 +2,7 @@ from PIL import Image
 
 from transformers import CLIPModel, CLIPImageProcessor, CLIPTokenizer
 
-from app.models.base import BaseTool
+from models.base import BaseTool
 
 class ClipTool(BaseTool): 
 

@@ -1,7 +1,7 @@
 from typing import Any
 
-from app.models.translation.base import BaseTranslation
-from app.utils.pre_processing import clean
+from models.translation.base import BaseTranslation
+from utils.pre_processing import clean
 
 # HuggingFace's model card: Helsinki-NLP/opus-mt-vi-en
 class MarianTranslator(BaseTranslation):

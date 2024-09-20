@@ -3,7 +3,7 @@ from PIL import Image
 import torch
 from lavis.models import load_model_and_preprocess
 
-from app.models.base import BaseTool
+from models.base import BaseTool
 
 class BlipTool(BaseTool):
     """

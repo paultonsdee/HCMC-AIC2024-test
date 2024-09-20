@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from app.routes import base_route, search_route
+from routes import base_route, search_route
 
 
 def setup_app(lifespan=None) -> FastAPI: 
