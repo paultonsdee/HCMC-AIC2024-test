@@ -1,17 +1,22 @@
- FROM ubuntu:20.04
+ FROM python:3.10-slim
 
 # Set the working directory
+RUN  echo "Setup the working directory ..."
 WORKDIR /backend
 
 # Copy files from local to container
-COPY /app .
-COPY requirements.txt .
+RUN echo "Moving files from host to container ..."
+# COPY /app /backend/
+# COPY requirements.txt /backend
+COPY . /backend/
 
 # Setup environments
-RUN apt-get update && apt-get install -y python3.9 python3.9-dev
+RUN echo "Setup environments"
 RUN pip install --upgrade pip
 
 
 # Setup libraries
+RUN echo "Setup libraries and dependencies ..."
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 RUN pip install -r requirements.txt --no-cache-dir
+RUN echo "Done Setting ${PWD}"

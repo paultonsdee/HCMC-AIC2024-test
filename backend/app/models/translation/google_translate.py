@@ -1,10 +1,11 @@
 from models.translation.base import BaseTranslation
 from utils.pre_processing import clean
 
-import httpcore
-from typing import Any
+# import httpcore
+# from typing import Any #type: ignore
 
-setattr(httpcore, 'SyncHTTPTransport', Any)
+
+# setattr(httpcore, 'SyncHTTPTransport', Any) #type: ignore
 
 
 class GoogleTranslator(BaseTranslation):

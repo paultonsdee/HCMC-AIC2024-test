@@ -3,7 +3,7 @@
 /db/objects
 /db/media-info
 /db/features
-/db/keyframes.json
+/db/keyframes.csv
 /db/vid_url.json
 
 /backend/draft
