@@ -7,13 +7,12 @@ from models.embedding.blip_ import BlipTool
 from services.vector_store import VectorStore
 from utils.helpers import ignore_warning
 
-
 ignore_warning()
 
 @dataclass
 class Environment:
     device = "cuda"
-    root = "../db"                  # Need to go outside `/backend`
+    root = "db"                  # Need to go outside `/backend`
     features = "features"
     lst_keyframes = {
         'path': "s_optimized_keyframes", 

@@ -4,11 +4,16 @@ pwd
 echo "Downloading data ..."
 cd ./db
 # Assuming download_file.sh is a separate script (modify accordingly)
-bash download_file.sh
+# bash download_file.sh
 cd ../
 
 # Run backend
-echo "Moving to backend, then run backend"
+echo "Moving to backend and install requirements"
+cd ./backend
+# python3 -m pip install -r requirements.txt
+cd ../
+
+echo "Moving to app and run the app"
 cd ./backend/app
 # Assuming uvicorn requires typing_extensions (modify if not)
 if [ -n "$VIRTUAL_ENV" ]; then

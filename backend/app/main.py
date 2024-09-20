@@ -1,10 +1,11 @@
 import uvicorn
 from core.setup_lifespan import lifespan
 from core.setup_app import setup_app
-from utils.helpers import ignore_warning
+from utils.helpers import ignore_warning, get_to_root
 
+get_to_root()
 ignore_warning()
-
+import subprocess; print(subprocess.run(['pwd']))
 app = setup_app(lifespan)
 
 

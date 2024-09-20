@@ -1,8 +1,5 @@
-import os
-import sys
 import json
 import yaml
-from pathlib import Path
 
 
 def read_yaml(file_path: str) -> dict:
@@ -27,6 +24,9 @@ def str_to_json(payload: str) -> dict:
 
 
 def get_to_root(): 
+    import os
+    import sys
+    from pathlib import Path
     FILE = Path(__file__).resolve()
     ROOT = FILE.parents[1]  # Root directory
     if str(ROOT) not in sys.path:
