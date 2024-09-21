@@ -28,5 +28,5 @@ coverage.xml
 
 # Ignore Git and draft files
 .git
-/drafts
-/tests
+/draft
+/test

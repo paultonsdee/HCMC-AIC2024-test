@@ -44,9 +44,6 @@ async def lifespan(app):
     root_features = os.path.join(env_dir.root, env_dir.features)
     project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
     bin_file= os.path.join(project_root, root_features, f'{config.embedding_model.bin_name}.bin')
-    # logging.info(bin_file_01)
-    # logging.info(project_root == "/home/octoopt/Desktop/Lab/Personal/HCMC-AIC2024/db/features/blip2fe.bin")
-    # bin_file = "/home/octoopt/Desktop/Lab/Personal/HCMC-AIC2024/db/features/blip2fe.bin"
     vector_store = config.vector_store(env_dir.root, bin_file, id2img_fps, config.device, config.embedding_model)
     app.state.vector_store = vector_store
 
@@ -58,3 +55,4 @@ async def lifespan(app):
     del app.state.embedding_model
     del app.state.vector_store    
 
+    logging.info("[INFO] DONE!!!")
