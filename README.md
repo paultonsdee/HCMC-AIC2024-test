@@ -72,6 +72,6 @@ The project utilizes LLMs for prompt refinement, therefore, you have to get API'
 
 ## 🧑‍💻 Contributors
 
-<a href="https://github.com/MinLee0210">
+<!-- <a href="https://github.com/MinLee0210">
     <img src="https://avatars.githubusercontent.com/u/57653278?v=4">
-</a>
+</a> -->
