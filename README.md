@@ -36,8 +36,8 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 ### Server building
 
 - Back-end: FastAPI. 
-- Front-end: FastAPI (Jinja2), HTML/CSS/JS, Boostrap. 
-- Container: Docker.
+- Front-end: ...
+- Deploy: Docker.
 
 ### Core technology
 
@@ -53,7 +53,6 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 **Setup Environment**
 
-The project utilizes LLMs for prompt refinement, therefore, you have to get API's keys from Gemini or Groq to achieve the best result. In order to integrate to the system, move to the `/backend` directory and create an `.env` file. The `.env.example` demonstrates to content of the `.env` file. 
 
 **Run the application**
 

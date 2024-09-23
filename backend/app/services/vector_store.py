@@ -1,3 +1,5 @@
+"""Settings for FAISS vector indexing"""
+
 import numpy as np
 import faiss
 from PIL import Image
@@ -56,7 +58,8 @@ class VectorStore:
             np.ndarray: The extracted features.
         """
         if online:
-            img = Image.open(requests.get(image_path, stream=True).raw).convert('RGB')
+            request_obj = requests.get(image_path, stream=True, timeout=10).raw
+            img = Image.open(request_obj).convert('RGB')
         else:
             img = Image.open(image_path)
         

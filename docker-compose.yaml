@@ -13,13 +13,13 @@ services:
       - db
     environment:
       - PYTORCH_CUDA_VISIBLE_DEVICES=0  # Assuming you have one GPU
+    links: 
+      - "db"
 
   db:
     build: ./db
     container_name: hcmc-images-storage
     command: sh -c "pwd && ls -la"
     volumes:
-      - hcmc-images-data:/db  # Named volume for persistence (optional)
+      - ./db:/db  # Named volume for persistence (optional)
 
-volumes:
-  hcmc-images-data:  # Optional: define named volume

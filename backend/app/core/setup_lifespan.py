@@ -4,7 +4,6 @@ from contextlib import asynccontextmanager
 
 from core.config import Config
 from core.logger import set_logger
-
 from utils.helpers import ignore_warning, get_to_root
 
 get_to_root()
@@ -15,14 +14,26 @@ logging = set_logger()
 
 @asynccontextmanager
 async def lifespan(app): 
-    
-    logging.info("[INFO] Setup lifespan ...")
+    """
+    Sets up and cleans up application resources during the FastAPI lifespan.
 
-    logging.info("[INFO] Setup Paths ...")
+    This function is executed during the application startup and shutdown phases.
+    It initializes key components like paths, translator, embedding model,
+    and vector store, and cleans them up during shutdown.
+
+
+    Args:
+        app (FastAPI): The FastAPI application instance.
+        
+    """
+    logging.info("Setup lifespan ...")
+
+    logging.info("Setup Paths ...")
     env_dir = config.environment
-    lst_keyframes = glob.glob(os.path.join(env_dir.root, 
-                            f"{env_dir.lst_keyframes['path']}", 
-                            f"*{env_dir.lst_keyframes['format']}"))
+    lst_keyframes = glob.glob(os.path.join(env_dir.root,
+                                           env_dir.db_root, 
+                                           f"{env_dir.lst_keyframes['path']}", 
+                                           f"*{env_dir.lst_keyframes['format']}"))
     lst_keyframes.sort()
 
     id2img_fps = dict()
@@ -30,29 +41,29 @@ async def lifespan(app):
         id2img_fps[i] = img_path
 
     # Setup Translator
-    logging.info("[INFO] Setup Translator ...")
+    logging.info("Setup Translator ...")
     app.state.translator = config.translator
     
     
     # Setup Embedding Model
-    logging.info("[INFO] Setup Embedding Model ...")
+    logging.info("Setup Embedding Model ...")
     app.state.embedding_model = config.embedding_model
 
 
     # Setup Vector Store
-    logging.info("[INFO] Setup Vector Store ...")
-    root_features = os.path.join(env_dir.root, env_dir.features)
-    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-    bin_file= os.path.join(project_root, root_features, f'{config.embedding_model.bin_name}.bin')
+    logging.info("Setup Vector Store ...")
+    db_features = os.path.join(env_dir.db_root, env_dir.features)
+    # project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    bin_file= os.path.join(env_dir.root, db_features, f'{config.embedding_model.bin_name}.bin')
     vector_store = config.vector_store(env_dir.root, bin_file, id2img_fps, config.device, config.embedding_model)
     app.state.vector_store = vector_store
 
     yield
     
-    logging.info("[INFO] Clean up lifespan ...")
+    logging.info("Clean up lifespan ...")
 
     del app.state.translator
     del app.state.embedding_model
     del app.state.vector_store    
 
-    logging.info("[INFO] DONE!!!")
+    logging.info("DONE!!!")

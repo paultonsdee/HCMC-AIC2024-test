@@ -1,3 +1,4 @@
+import os
 from dataclasses import dataclass
 
 import torch
@@ -12,7 +13,8 @@ ignore_warning()
 @dataclass
 class Environment:
     device = "cuda"
-    root = "db"                  # Need to go outside `/backend`
+    root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    db_root = "db"                  # Need to go outside `/backend`
     features = "features"
     lst_keyframes = {
         'path': "s_optimized_keyframes", 

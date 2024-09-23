@@ -20,21 +20,21 @@ logging = set_logger()
 async def search_text(request: Request): 
     try: 
 
-        logging.info("[INFO] Invoke search_text ...")
+        logging.info("Invoke search_text ...")
         payload = await request.json()
         payload = json.loads(payload)
 
-        logging.info("[INFO] search_text: get data from request ...")
+        logging.info("search_text: get data from request ...")
         query, top_k = payload['query'], payload['top_k']
         translator = request.app.state.translator
         vector_store = request.app.state.vector_store
 
-        logging.info("[INFO] search_text: start querying ...")
+        logging.info("search_text: start querying ...")
         translated_query = translator.run(query)
         logging.debug(translated_query)
-        result = search_by_text(translated_query, top_k, vector_store)
+        results = search_by_text(translated_query, top_k, vector_store)
 
-        return JSONResponse(content=result, 
+        return JSONResponse(content=results, 
                         media_type="application/json", 
                         status_code=200)
     
@@ -46,13 +46,16 @@ async def search_text(request: Request):
 async def get_image(image_idx: str): 
     try:
 
-        logging.info("[INFO] Invoke get_image ...")
+        logging.info("Invoke get_image ...")
 
         image_type = image_idx.split('.')[-1]
-        image_path = os.path.join(env_dir.root, env_dir.lst_keyframes['path'], image_idx)
+        image_path = os.path.join(env_dir.root, 
+                                  env_dir.db_root, 
+                                  env_dir.lst_keyframes['path'], 
+                                  image_idx)
         logging.info(image_path)
 
-        logging.info("[INFO] get_image: sending the image ...")
+        logging.info("get_image: sending the image ...")
         with open(image_path, "rb") as f:
             return Response(content=f.read(), 
                             media_type=f"image/{image_type}",

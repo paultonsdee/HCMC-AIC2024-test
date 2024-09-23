@@ -1,5 +1,9 @@
+import os
+import sys
 import json
 import yaml
+import warnings
+from pathlib import Path
 
 
 def read_yaml(file_path: str) -> dict:
@@ -23,17 +27,52 @@ def str_to_json(payload: str) -> dict:
         raise ValueError(f"Invalid JSON string: {e}")
 
 
-def get_to_root(): 
-    import os
-    import sys
-    from pathlib import Path
-    FILE = Path(__file__).resolve()
-    ROOT = FILE.parents[1]  # Root directory
+# TODO: Improve this to act as `dynamic_dirname`
+def get_to_root():
+    """
+    Retrieves the root directory of the current script.
+
+    Returns:
+        Path: The root directory path.
+    """
+
+    FILE = Path(__file__).resolve()  # Resolves the absolute path of the current script
+    ROOT = FILE.parents[1]  # Navigates one directory up from the script's directory to find the root
+
     if str(ROOT) not in sys.path:
-        sys.path.append(str(ROOT))  # add ROOT to PATH
-    ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
+        sys.path.append(str(ROOT))  # Adds the root directory to the system path for module import
+
+    ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # Makes the root path relative to the current working directory
+
+    return ROOT
+
+
+def dynamic_dirname(path, depth):
+    """
+    Recursively traverses the directory path to the specified depth.
+
+    Args:
+        path (str): The starting path.
+        depth (int): The desired depth to traverse.
+
+    Returns:
+        str: The directory path at the specified depth.
+
+    Example: 
+
+        current_dir = os.path.dirname(__file__)
+        desired_depth = 3  # Adjust the depth as needed
+
+        result = dynamic_dirname(current_dir, desired_depth)
+        print(result)  # Output: ./HCMC-AIO2024
+    """
+
+    if depth == 0:
+        return path
+
+    parent_dir = os.path.dirname(path)
+    return dynamic_dirname(parent_dir, depth - 1)
 
 
 def ignore_warning():
-    import warnings
     warnings.filterwarnings("ignore")
