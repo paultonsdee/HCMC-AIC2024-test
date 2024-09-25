@@ -1,7 +1,6 @@
 import torch
 
 from sklearn.metrics import silhouette_score
-from scipy.spatial.distance import cdist
 
 
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'

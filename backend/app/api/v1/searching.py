@@ -27,3 +27,10 @@ def search_by_text(query: str, top_k: int, vector_store) -> dict:
         'infos_query': infos_query, 
         'image_paths': image_paths
     }
+
+
+def search_by_image(): 
+    ...
+
+def search_by_image_online(): 
+    ...
