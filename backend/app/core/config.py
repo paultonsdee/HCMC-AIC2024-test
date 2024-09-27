@@ -13,7 +13,10 @@ ignore_warning()
 @dataclass
 class Environment:
     device = "cuda"
-    root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    # root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+    root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+
+    # Database path
     db_root = "db"                  # Need to go outside `/backend`
     features = "features"
     lst_keyframes = {

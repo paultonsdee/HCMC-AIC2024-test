@@ -9,17 +9,7 @@ services:
       - 8000:8000
     volumes:
       - ./backend:/app  # Mount application code only
-    depends_on:
-      - db
+      - ./backend:/db
     environment:
       - PYTORCH_CUDA_VISIBLE_DEVICES=0  # Assuming you have one GPU
-    links: 
-      - "db"
-
-  db:
-    build: ./db
-    container_name: hcmc-images-storage
-    command: sh -c "pwd && ls -la"
-    volumes:
-      - ./db:/db  # Named volume for persistence (optional)
 

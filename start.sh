@@ -1,11 +1,6 @@
 #!/bin/sh
 
 pwd
-echo "Downloading data ..."
-cd ./db
-# Assuming download_file.sh is a separate script (modify accordingly)
-# bash download_file.sh
-cd ../
 
 # Run backend
 echo "Moving to backend and install requirements"
