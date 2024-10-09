@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./frontend/static/images/contest_banner.png" width="1080">
+  <img src="./app/static/images/contest_banner.png" width="1080">
 </p>
 <h1 align="center">HCMC-AIC2024</h1>
 
@@ -29,15 +29,13 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 ## 🎯 Features
 
-- 
-
 ## 🤖 Tech Stack
 
 ### Server building
 
 - Back-end: FastAPI. 
-- Front-end: FastAPI (Jinja2), HTML/CSS/JS, Boostrap. 
-- Container: Docker.
+- Front-end: ...
+- Deploy: Docker.
 
 ### Core technology
 
@@ -48,18 +46,19 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 ## 🚀 Usage
 
-**Clone the repository**
-
-
-**Setup Environment**
-
-The project utilizes LLMs for prompt refinement, therefore, you have to get API's keys from Gemini or Groq to achieve the best result. In order to integrate to the system, move to the `/backend` directory and create an `.env` file. The `.env.example` demonstrates to content of the `.env` file. 
-
-**Run the application**
+1. **Clone the repository**
 
 
 
-**API Inference**
+2. **Setup Environment**
+
+
+
+3. **Run the application**
+
+
+
+4. **API Inference**
 
 
 ## 👣 Workflow
@@ -72,6 +71,6 @@ The project utilizes LLMs for prompt refinement, therefore, you have to get API'
 
 ## 🧑‍💻 Contributors
 
-<a href="https://github.com/MinLee0210">
+<!-- <a href="https://github.com/MinLee0210">
     <img src="https://avatars.githubusercontent.com/u/57653278?v=4">
-</a>
+</a> -->

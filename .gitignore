@@ -1,3 +1,15 @@
+# Ignore local files but download from `download_file.sh` for saving space on GitHub.
+/backend/db/s_optimized_keyframes
+/backend/db/objects
+/backend/db/media-info
+/backend/db/features
+/backend/db/keyframes.csv
+/backend/db/vid_url.json
+/db
+/backend/draft
+
+# /recommender
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

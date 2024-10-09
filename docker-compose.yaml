@@ -1,11 +1,15 @@
-version: '3'
+name: hcmc-aic-2024
 
 services:
-  web: 
-    build: .
-    container_name: omnilens-backend
-    command: sh -c "uvicorn main:app --reload --port=8000 --host=0.0.0.0"
-    ports: 
+  web:
+    build: ./backend
+    container_name: hcmc-backend
+    command: sh -c "pwd && ls -la && cd /backend/app && uvicorn main:app --reload --host=0.0.0.0"
+    ports:
       - 8000:8000
     volumes:
-      - .:/app
+      - ./backend:/app  # Mount application code only
+      - ./backend:/db
+    environment:
+      - PYTORCH_CUDA_VISIBLE_DEVICES=0  # Assuming you have one GPU
+
