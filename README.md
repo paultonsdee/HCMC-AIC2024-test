@@ -29,6 +29,7 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 ## 🎯 Features
 
+
 ## 🤖 Tech Stack
 
 ### Server building
@@ -46,6 +47,37 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 ## 🚀 Usage
 
+### App Directory
+```
+.
+├── backend
+│   ├── app
+│   │   ├── api
+│   │   │   └── v1
+│   │   ├── components
+│   │   │   ├── embedding
+│   │   │   ├── kfe               # key frames extraction
+│   │   │   ├── llms              # query-rewrite
+│   │   │   └── translation
+│   │   ├── core
+│   │   ├── routes
+│   │   ├── services
+│   │   └── utils
+│   ├── db
+│   │   ├── features
+│   │   ├── media-info
+│   │   ├── objects
+│   └── test
+│       └── unit
+├── bash
+├── notebooks
+└── recommender
+    └── app
+        └── api
+```
+
+### Running the app
+
 1. **Clone the repository**
 
 
@@ -54,15 +86,23 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 
 
+**Download dataset from Kaggle**
+
+We store our dataset on Kaggle. Please, download it from [here](https://www.kaggle.com/datasets/pyetsvu/aic2024-extracted-data) and compress it in `db` directory, `/backend/db`.
+Additionally, we have 2 other appoaches to download. You can read the detail from [here](backend/db/README.md).
+
+
 3. **Run the application**
 
 
 
-4. **API Inference**
-
-
 ## 👣 Workflow
 
+### API
+
+```
+
+```
 
 
 ## 👀 Demo

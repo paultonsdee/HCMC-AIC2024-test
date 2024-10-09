@@ -1,7 +1,14 @@
-# Introduction to `db`
+# Instruction to setup DB
 
 
-## Installation
+## Download dataset manually (HIGHLY RECOMMEND)
 
-The script for downloading pre-defined dataset is scripted in `download_file.sh`. The code is run well in most cases. 
-However, in case the dataset is not able to be downloaded due to high level of throughput, etc. please refers the dataset from this [link](https://drive.google.com/uc?id=18Fx1dmi_OJVdGE5ObU8NR08z7DNjCd9n). After download the dataset and extract it, please put it into the `db` directory. 
+We store our dataset on Kaggle. Please, download it from [here](https://www.kaggle.com/datasets/pyetsvu/aic2024-extracted-data) and compress it in `db` directory, `/backend/db`
+
+
+## Download dataset via shell
+
+We support 2 versions of downloading dataset via command shell, via Google Drive and Kaggle. 
+
+1. Google Drive: This version got a problem that Google may prevent too many download request for a large file. 
+2. Kaggle: This version require `kaggle.json`, which is Kaggle's beta API, you can interact with Competitions and Datasets to download data, make submissions, and more via the command line. You can get it from [here](https://www.kaggle.com/settings),`https://www.kaggle.com/settings` , and store it in this directory.
