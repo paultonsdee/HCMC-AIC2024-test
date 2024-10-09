@@ -18,6 +18,7 @@ logging = set_logger()
 
 @search_route.post("/")
 async def search_text(request: Request): 
+    # Search related images based on text-based query.
     try: 
 
         logging.info("Invoke search_text ...")
@@ -44,6 +45,7 @@ async def search_text(request: Request):
 
 @search_route.get('/{image_idx}')
 async def get_image(image_idx: str): 
+    # Search image based on image_idx.
     try:
 
         logging.info("Invoke get_image ...")

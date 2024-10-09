@@ -13,11 +13,13 @@ class ClipTool(BaseTool):
     "metaH14": ('facebook/metaclip-h14-fullcc2.5b', 'metaH14')
     }
 
-    def __init__(self, model_id:str, device:str="auto") -> None:
+    def __init__(self, model_id:str="clipB32", device:str="auto") -> None:
         super().__init__()
-        self.model = CLIPModel.from_pretrained(model_id).to(device)
-        self.image_processor = CLIPImageProcessor.from_pretrained(model_id)
-        self.text_processor = CLIPTokenizer.from_pretrained(model_id)
+
+        self.model_name, self.bin_name = self.SUPPORTED_MODELS[model_id]
+        self.model = CLIPModel.from_pretrained(self.model_name).to(device)
+        self.image_processor = CLIPImageProcessor.from_pretrained(self.model_name)
+        self.text_processor = CLIPTokenizer.from_pretrained(self.model_name)
 
     def run(self, input_data: object, is_numpy: bool = True) -> object:
         """

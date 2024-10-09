@@ -10,7 +10,6 @@ class BaseTool(ABC):
 
 class BaseToolFactory(ABC): 
 
-    @abstractmethod
     @staticmethod
     def produce(provider:str, **kwargs): 
         raise NotImplementedError

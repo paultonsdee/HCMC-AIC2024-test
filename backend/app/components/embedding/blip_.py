@@ -15,8 +15,10 @@ class BlipTool(BaseTool):
         is_eval (bool, optional): Whether to use the model in evaluation mode. Defaults to True.
         device (str, optional): The device to use for the model. Defaults to "auto".
     """
-
-    def __init__(self, model_name: str = "blip2_feature_extractor", 
+    SUPPORTED_MODELS = {
+        'blip2': ("blip2_feature_extractor", "blip2fe")
+    }
+    def __init__(self, model_id: str = "blip2", 
                  model_type: str = "pretrain", 
                  is_eval: bool = True,
                  device: str = "auto"):
@@ -30,15 +32,14 @@ class BlipTool(BaseTool):
             device (str, optional): The device to use for the model. Defaults to "auto".
         """
         super().__init__()
+        self.model_name, self.bin_name = self.SUPPORTED_MODELS[model_id]
         self.model, self.image_processor, self.text_processor = load_model_and_preprocess(
-            name=model_name,
+            name=self.model_name,
             model_type=model_type,
             is_eval=is_eval,
             device=device
         )
-        self.model_name = model_name
         self.device = device
-        self.bin_name = 'blip2fe'       # TODO: Make this adaptive.
         
     def run(self, input_data:object, is_numpy:bool=True) -> object:
         """
