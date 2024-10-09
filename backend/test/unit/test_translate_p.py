@@ -1,7 +1,7 @@
 import unittest
 
 from app.utils.helpers import get_to_root
-from app.models.translation import PyTranslator
+from app.components.translation import PyTranslator
 
 get_to_root()
 

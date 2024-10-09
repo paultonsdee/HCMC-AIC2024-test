@@ -3,8 +3,8 @@ from dataclasses import dataclass
 
 import torch
 
-from models.translation import GoogleTranslator
-from models.embedding.blip_ import BlipTool
+from components.translation import GoogleTranslator
+from components.embedding.blip_ import BlipTool
 from services.vector_store import VectorStore
 from utils.helpers import ignore_warning
 

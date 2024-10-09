@@ -1,7 +1,7 @@
 import unittest
 
 from app.utils.helpers import get_to_root
-from app.models.translation.google_translate import GoogleTranslator
+from app.components.translation.google_translate import GoogleTranslator
 
 get_to_root()
 

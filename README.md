@@ -29,8 +29,6 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 ## 🎯 Features
 
-- 
-
 ## 🤖 Tech Stack
 
 ### Server building
@@ -48,17 +46,19 @@ More details about the challenge refers to this [link.](https://aichallenge.hoch
 
 ## 🚀 Usage
 
-**Clone the repository**
-
-
-**Setup Environment**
-
-
-**Run the application**
+1. **Clone the repository**
 
 
 
-**API Inference**
+2. **Setup Environment**
+
+
+
+3. **Run the application**
+
+
+
+4. **API Inference**
 
 
 ## 👣 Workflow
