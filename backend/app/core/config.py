@@ -12,7 +12,6 @@ ignore_warning()
 
 @dataclass
 class Environment:
-    device = "cuda"
     # root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
     root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
@@ -29,6 +28,7 @@ class Environment:
 @dataclass
 class Config:
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    # device = 'cpu'
     environment = Environment()
     translator = GoogleTranslator()
     embedding_model = ClipTool(device=device)
